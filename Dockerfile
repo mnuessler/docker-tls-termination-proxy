@@ -6,9 +6,11 @@ LABEL Description="A TLS termination proxy using pound"
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y pound && apt-get clean
 
-RUN mkdir -p /var/run/pound && chown www-data:www-data /var/run/pound
+RUN mkdir -p /var/run/pound && chown -R www-data:www-data /var/run/pound
 
-EXPOSE 4443
+VOLUME /cert.pem
+
+EXPOSE 443
 
 COPY pound.cfg /etc/pound/
 COPY entrypoint.sh /
