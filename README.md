@@ -3,8 +3,8 @@
 A docker image that provides a simple TLS/SSL termination proxy to be
 used in front of another running docker container with a web server.
 
-It is using [pound][1] for TLS/SSL termination. Pound is a small
-reverse proxy, load balancer and HTTPS front-end for Web server(s). Of
+It is using [Pound][1] for TLS/SSL termination. Pound is a small
+reverse proxy, load balancer and HTTPS front-end for Web servers. Of
 course there various other good pieces of software out there, that can
 do the same job just as well, for instance [HAProxy][2] and
 [nginx][3].
@@ -44,6 +44,17 @@ Or just pull it from [Docker Hub][4]:
 ```
 docker pull mnuessler/docker-tls-termination-proxy
 ```
+
+### Troubleshooting
+
+* *Container fails to start with error "Port is supported only for
+  INET/INET6 back-ends"*: When HTTPS_UPSTREAM_SERVER_ADDRESS is set to
+  a hostname (i.e. container name) and that hostname cannot be
+  resolved to an IP address on startup, then Pound will assume that it
+  represents the path for a Unix-domain socket. In that case, the
+  configuration option for port becomes invalid. Solution: Make sure
+  that the value configured for server address is a valid hostname. If
+  you are using a container name, make the container is linked.
 
 [1]: http://www.apsis.ch/pound
 [2]: http://www.haproxy.org/
