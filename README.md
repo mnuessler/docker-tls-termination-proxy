@@ -30,19 +30,19 @@ docker run \
     -e HTTPS_UPSTREAM_SERVER_PORT=80 \
     -v /path/to/cert.pem:/cert.pem:ro \
     --link othercontainer:othercontainer \
-    mnuessler/docker-tls-termination-proxy
+    mnuessler/tls-termination-proxy
 ```
 
 ### Build the image
 
 ```
-docker build -t mnuessler/docker-tls-termination-proxy .
+docker build -t mnuessler/tls-termination-proxy .
 ```
 
 Or just pull it from [Docker Hub][4]:
 
 ```
-docker pull mnuessler/docker-tls-termination-proxy
+docker pull mnuessler/tls-termination-proxy
 ```
 
 ### Troubleshooting
@@ -54,9 +54,9 @@ docker pull mnuessler/docker-tls-termination-proxy
   represents the path for a Unix-domain socket. In that case, the
   configuration option for port becomes invalid. Solution: Make sure
   that the value configured for server address is a valid hostname. If
-  you are using a container name, make the container is linked.
+  you are using a container name, make sure the container is linked.
 
 [1]: http://www.apsis.ch/pound
 [2]: http://www.haproxy.org/
 [3]: http://nginx.org/
-[4]: https://registry.hub.docker.com/u/mnuessler/docker-tls-termination-proxy/
+[4]: https://registry.hub.docker.com/u/mnuessler/tls-termination-proxy/
