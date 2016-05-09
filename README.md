@@ -1,13 +1,15 @@
 # TLS Termination Proxy
 
+[![Docker Pulls][pulls-badge]][docker-hub]
+
 A docker image that provides a simple TLS/SSL termination proxy to be
 used in front of another running docker container with a web server.
 
-It is using [Pound][1] for TLS/SSL termination. Pound is a small
+It is using [Pound][pound] for TLS/SSL termination. Pound is a small
 reverse proxy, load balancer and HTTPS front-end for Web servers. Of
 course there various other good pieces of software out there, that can
-do the same job just as well, for instance [HAProxy][2] and
-[nginx][3].
+do the same job just as well, for instance [HAProxy][haproxy] and
+[nginx][nginx].
 
 ## Usage
 
@@ -59,7 +61,7 @@ If `CERT_PATH` is not configured, it will default to `/cert.pem`.
 docker build -t mnuessler/tls-termination-proxy .
 ```
 
-Or just pull it from [Docker Hub][4]:
+Or simply pull it from [Docker Hub][docker-hub]:
 
 ```
 docker pull mnuessler/tls-termination-proxy
@@ -76,7 +78,9 @@ docker pull mnuessler/tls-termination-proxy
   that the value configured for server address is a valid hostname. If
   you are using a container name, make sure the container is linked.
 
-[1]: http://www.apsis.ch/pound
-[2]: http://www.haproxy.org/
-[3]: http://nginx.org/
-[4]: https://registry.hub.docker.com/u/mnuessler/tls-termination-proxy/
+[pulls-badge]: https://img.shields.io/docker/pulls/mnuessler/tls-termination-proxy.svg?maxAge=3600
+[docker-hub]: https://registry.hub.docker.com/u/mnuessler/tls-termination-proxy/
+[pound]: http://www.apsis.ch/pound
+[haproxy]: http://www.haproxy.org/
+[nginx]: http://nginx.org/
+
